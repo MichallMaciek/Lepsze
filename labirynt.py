@@ -1,29 +1,8 @@
-import time
-
 la = [[1, 1, 0, 0, 0],
      [0, 1, 0, 0, 0],
      [1, 1, 1, 1, 1],
      [1, 0, 0, 0, 0],
      [1, 0, 0, 0, 0]]
-
-# la = [[0, 1, 0, 0, 0],
-#      [0, 1, 1, 0, 0],
-#      [0, 1, 1, 0, 0],
-#      [1, 1, 1, 0, 0],
-#      [1, 0, 0, 0, 0]]
-
-# la = [[1, 0, 0, 0, 0],
-#      [1, 0, 1, 1, 1],
-#      [1, 0, 1, 0, 1],
-#      [1, 1, 1, 0, 1],
-#      [0, 0, 0, 0, 1]]
-
-# la = [[1, 0, 0, 0, 0],
-#      [1, 1, 1, 1, 1],
-#      [1, 0, 1, 0, 1],
-#      [1, 0, 1, 0, 1],
-#      [0, 0, 0, 0, 1]]
-
 
 n = len(la)
 
@@ -46,7 +25,7 @@ def rmodga():
     while f:
         l = []
         for jj, j in path.items():
-            if len(j) == 1 and jj[1] != 0 and jj[1] != 4 and jj not in prepositions:
+            if len(j) == 1 and jj[1] != 0 and jj[1] != n - 1 and jj not in prepositions:
                 rm(jj)
                 path.pop(jj)
                 l.append(False)
@@ -71,20 +50,17 @@ path = {}
 for i, j in enumerate(positions):
     for k in range(len(positions)-1, -1, -1):
         if distance(j, positions[k]):
-            # print(j, positions[k])
             if j not in path.keys():
                 path[j] = [positions[k]]
             else:
                 path[j].append(positions[k])
 
-print()
-print(f"path")
-
-print()
 temp = positions[0]
 prepositions = [temp]
 positions.remove(temp)
 
+print()
+print(f"path")
 for _ in path.items():
     print(_)
 
@@ -100,9 +76,3 @@ while prepositions[-1][-1] + 1 < n:
 
 print()
 print(f"prepositions {prepositions}")
-
-
-
-
-
-
